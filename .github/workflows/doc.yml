@@ -16,7 +16,10 @@ jobs:
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.1.2
@@ -29,13 +32,12 @@ jobs:
       - name: Generate component documentation
         run: ./node_modules/.bin/vuedoc.md components/*.vue --output ./docs/
 
-      - name: Check for changes
-        run: git status
-      - name: Stage changed files
-        run: git add .
-      - name: Commit changed files
-        run: git commit -m "Auto updating components documentation"
-      - name: Fetch from dev
-        run: git fetch origin dev
-      - name: Push code to dev
-        run: git push origin HEAD:dev
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: dev
