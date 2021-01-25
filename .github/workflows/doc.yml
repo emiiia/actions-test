@@ -28,3 +28,14 @@ jobs:
 
       - name: Generate component documentation
         run: ./node_modules/.bin/vuedoc.md components/*.vue --output ./docs/
+
+      - name: Check for changes
+        run: git status
+      - name: Stage changed files
+        run: git add .
+      - name: Commit changed files
+        run: git commit -m "Auto updating components documentation"
+      - name: Fetch from dev
+        run: git fetch origin dev
+      - name: Push code to dev
+        run: git push origin HEAD:dev
