@@ -10,6 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vuedoc/md": "^3.2.0",
+    "@vuedoc/parser": "^3.2.1",
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.2",
@@ -20,6 +22,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
+    "jsdoc": "^3.6.6",
     "vue-jest": "^3.0.4"
   }
 }

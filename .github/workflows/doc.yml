@@ -1,0 +1,19 @@
+name: Generate Documentation
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  doc:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Generate component documentation
+        run: vuedoc.md components/*.vue --output docs/
