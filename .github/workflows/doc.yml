@@ -27,4 +27,4 @@ jobs:
         run: npm install --save @vuedoc/parser @vuedoc/md 
 
       - name: Generate component documentation
-        run: ./node_modules/.bin/vuedoc.md components/*.vue --output docs/
+        run: ./node_modules/.bin/vuedoc.md components/*.vue --output ./docs/
