@@ -24,5 +24,6 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Generate component documentation
-        run: npm install @vuedoc/parser @vuedoc/md 
-             vuedoc.md components/*.vue --output docs/
+        run:  |
+          npm install @vuedoc/parser @vuedoc/md 
+          vuedoc.md components/*.vue --output docs/
